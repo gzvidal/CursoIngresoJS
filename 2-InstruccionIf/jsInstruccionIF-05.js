@@ -1,6 +1,9 @@
 function mostrar()
 {
-	//tomo la edad  
-	alert("ok");
+	var edad;
+	edad=txtIdEdad.value;
 
-}//FIN DE LA FUNCIÓN
+	if(edad <13 || edad > 17){
+		alert("La persona no es adolescente")
+	}
+}
