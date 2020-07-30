@@ -1,3 +1,10 @@
+// Ejercicio número 11: Calcular dos números random entre 1 y 51: 
+// Si los dos son pares: multiplicarlos.
+// Si los dos son impares restarlos.
+// Si alguno es divisible por 5 elevarlo al cubo. 
+// Si no ocurrió ningún caso anterior, mostrar "No pasó nada" 
+
+
 function mostrar()
 {
 	var numeroRandomUno;
@@ -21,7 +28,7 @@ function mostrar()
 	
 	if(numeroRandomUno%2==0 || numeroRandomDos%2==0){
 		totalUno= numeroRandomUno*numeroRandomDos
-		alert("Dado que uno de los dos números es par, la multiplicación da un total de: "+ totalUno);
+		alert("Dado que los dos números son pares, la multiplicación da un total de: "+ totalUno);
 	} else {
 		totalDos= numeroRandomUno-numeroRandomDos
 		alert("Dado que uno de los dos numeros es impar, la resta da un total de: " + totalDos);

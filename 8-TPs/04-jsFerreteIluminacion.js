@@ -11,47 +11,69 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
 function CalcularPrecio()
 {
     var precioInicial;
-    var precioConDescuento;
-    var cantidadDeLamparas;
-    var marcaDeLampara;
-    var ingresosBrutos;
-
-    precioConDescuento=txtIdprecioDescuento.value;
     precioInicial=35;
-    cantidadDeLamparas=txtIdCantidad.value;
+    var cantidadDeLamparas;
+ cantidadDeLamparas= parseInt(txtIdCantidad.value);
+    var marcaDeLampara;
     marcaDeLampara=Marca.value;
-    parseInt(cantidadDeLamparas);
+    var subTotal;
+    subTotal = cantidadDeLamparas * precioInicial;
+    var precioConDescuento;
+    precioConDescuento = subTotal;
+    txtIdprecioDescuento.value = precioConDescuento;
+    var ingresosBrutos;
+    precioConDescuento=txtIdprecioDescuento.value;
+   
+    var precioTotal;
 
     if(cantidadDeLamparas>=6){
-        precioConDescuento=(precioInicial*cantidadDeLamparas)*0.5
-    } 
-    else if(cantidadDeLamparas==5 && marcaDeLampara=="ArgentinaLuz"){
-        precioConDescuento=(precioInicial*cantidadDeLamparas)*0.4
-    } 
-    else if(cantidadDeLamparas==5){
-        precioConDescuento=(precioInicial*cantidadDeLamparas)*0.3
-    }
-    else if(cantidadDeLamparas==4 && marcaDeLampara=="ArgentinaLuz" || marcaDeLampara=="FelipeLamparas"){
-        precioConDescuento=(precioInicial*cantidadDeLamparas)*0.25
-    } 
-    else if(cantidadDeLamparas==4){
-        precioConDescuento=(precioInicial*cantidadDeLamparas)*0.20
-    } 
-    else if(cantidadDeLamparas==3 && marcaDeLampara=="ArgentinaLuz"){
-        precioConDescuento=(precioInicial*cantidadDeLamparas)*0.15
-    } 
-    else if(cantidadDeLamparas==3 && marcaDeLampara=="FelipeLamparas"){
-        precioConDescuento=(precioInicial*cantidadDeLamparas)*0.10
-    } 
-    else if(cantidadDeLamparas==3){
-        precioConDescuento=(precioInicial*cantidadDeLamparas)*0.5
-    }
-    if(precioConDescuento>120){
-        ingresosBrutos=(precioConDescuento*0.10);
-        precioConDescuento=precioConDescuento+ingresosBrutos
-    }
+        precioConDescuento= subTotal * 0.5;
     
-    txtIdprecioDescuento.value=precioConDescuento;
-
+    } else {
+        if(cantidadDeLamparas===5){
+        switch(marcaDeLampara){
+            case "ArgentinaLuz":
+                precioConDescuento= subTotal * 0.6;
+                break;
+                default:
+                precioConDescuento= subTotal * 0.7;
+                break;
+        }
+    } else {
+        if(cantidadDeLamparas===4){
+            switch(marcaDeLampara){
+                case "ArgentinaLuz":
+                case "FelipeLamparas":
+                    precioConDescuento= subTotal * 0.75;
+                    break;
+                default:
+                    precioConDescuento = subTotal * 0.80;
+                    break;
+            }
+        } else {
+            if(cantidadDeLamparas===3){
+                switch(marcaDeLampara){
+                    case "ArgentinaLuz":
+                    precioConDescuento = subTotal * 0.85;
+                    break;
+                    case "FelipeLamparas":
+                    precioConDescuento = subTotal * 0.90;
+                    break;
+                    default:
+                    precioConDescuento = subTotal * 0.95;
+                    break;
+                }
+            }
+        }
+    }
 }
-    
+
+    if(precioConDescuento>=120){
+    ingresosBrutos = precioConDescuento * 0.10;
+    alert("Usted pagó" + ingresosBrutos + " de Ingresos Brutos");
+    } else {
+    ingresosBrutos = 0;
+    }
+	
+	precioTotal = precioConDescuento + ingresosBrutos;
+}
